@@ -1,7 +1,7 @@
 ![](media/header.png)
 
 > [!NOTE]  
-> In addition to this Vue demo of ic-siwe, there are more versions, for React etc. Check out the 
+> In addition to this Vue demo of ic-siwe, there are more versions, for React etc. Check out the
 > main package [ic-siwe](https://github.com/kristoferlund/ic-siwe) for more information.
 
 ✅ Sign in with Ethereum to interact with smart contracts (canisters) on the [Internet Computer](https://internetcomputer.org) (IC)!
@@ -22,11 +22,11 @@ This **Vue** demo application and template demonstrates how to login Ethereum us
 
 The goal of the [ic-siwe](https://github.com/kristoferlund/ic-siwe) project is to enhance the interoperability between Ethereum and the Internet Computer platform, enabling developers to build applications that leverage the strengths of both platforms.
 
-## 👀 Try the live demo: <https://lglxt-uyaaa-aaaal-qsgbq-cai.icp0.io>
+## 👀 Try the live demo: <https://kmevj-wiaaa-aaaal-qsggq-cai.icp0.io>
 
 ## Key features
 
-The demo is buit using [Vite](https://vitejs.dev/) to provide a fast development experience. 
+The demo is buit using [Vite](https://vitejs.dev/) to provide a fast development experience.
 
 ## Table of contents
 
@@ -143,8 +143,6 @@ dfx deploy backend --argument "$$(dfx canister id ic_siwe_provider)"
 ### Frontend
 
 The frontend is a Vue application that interacts with the backend canister. To be able to make authenticated calls to the backend canister, the frontend needs an identity. The identity is retrieved from the `ic_siwe_provider` canister.
-
-
 
 ## Updates
 
