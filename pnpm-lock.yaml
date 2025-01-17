@@ -24,8 +24,8 @@ importers:
         specifier: ^16.4.7
         version: 16.4.7
       ic-siwe-js:
-        specifier: ^0.2.2
-        version: 0.2.2(@dfinity/agent@2.2.0(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/identity@2.2.0(@dfinity/agent@2.2.0(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0)(viem@2.22.8(typescript@5.6.3))
+        specifier: ^0.2.3
+        version: 0.2.3(@dfinity/agent@2.2.0(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/identity@2.2.0(@dfinity/agent@2.2.0(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0)(viem@2.22.8(typescript@5.6.3))(vue@3.5.13(typescript@5.6.3))
       path:
         specifier: ^0.12.7
         version: 0.12.7
@@ -538,8 +538,8 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
 
-  ic-siwe-js@0.2.2:
-    resolution: {integrity: sha512-yUxhciDqSNTSvRTVkeZzGksuMXq9uu+VH6dcmkCmDZ2JGCtPK0tqq9IdHODUCx16bnR+a2xU02WXFTj2dhg5fw==}
+  ic-siwe-js@0.2.3:
+    resolution: {integrity: sha512-b4gky8e6ZJxDhS2VCzdCxDNuVisOh79i0FyhOnj6tluKWmi7ik/4hrroeZJQ+9SvSO1U/ho4PRf14gTky4mkow==}
     peerDependencies:
       '@dfinity/agent': '>=2.1.2'
       '@dfinity/candid': '>=2.1.1'
@@ -548,11 +548,14 @@ packages:
       react: ^18.3.1
       react-dom: ^18.3.1
       viem: ^2.19.0
+      vue: ^3.5.13
       wagmi: ^2.12.0
     peerDependenciesMeta:
       react:
         optional: true
       react-dom:
+        optional: true
+      vue:
         optional: true
       wagmi:
         optional: true
@@ -1133,7 +1136,7 @@ snapshots:
 
   he@1.2.0: {}
 
-  ic-siwe-js@0.2.2(@dfinity/agent@2.2.0(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/identity@2.2.0(@dfinity/agent@2.2.0(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0)(viem@2.22.8(typescript@5.6.3)):
+  ic-siwe-js@0.2.3(@dfinity/agent@2.2.0(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/identity@2.2.0(@dfinity/agent@2.2.0(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0)(viem@2.22.8(typescript@5.6.3))(vue@3.5.13(typescript@5.6.3)):
     dependencies:
       '@dfinity/agent': 2.2.0(@dfinity/candid@2.2.0(@dfinity/principal@2.2.0))(@dfinity/principal@2.2.0)
       '@dfinity/candid': 2.2.0(@dfinity/principal@2.2.0)
@@ -1141,6 +1144,8 @@ snapshots:
       '@dfinity/principal': 2.2.0
       '@xstate/store': 2.6.2
       viem: 2.22.8(typescript@5.6.3)
+    optionalDependencies:
+      vue: 3.5.13(typescript@5.6.3)
     transitivePeerDependencies:
       - solid-js
 

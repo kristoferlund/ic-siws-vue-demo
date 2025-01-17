@@ -14,7 +14,7 @@
     "@dfinity/identity": "^2.2.0",
     "@types/node": "^22.10.7",
     "dotenv": "^16.4.7",
-    "ic-siwe-js": "^0.2.2",
+    "ic-siwe-js": "^0.2.3",
     "path": "^0.12.7",
     "viem": "^2.22.8",
     "vite-plugin-environment": "^1.1.3",
