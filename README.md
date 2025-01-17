@@ -26,13 +26,10 @@ The goal of the [ic-siwe](https://github.com/kristoferlund/ic-siwe) project is t
 
 ## Key features
 
-The demo is buit using [Vite](https://vitejs.dev/) to provide a fast development experience.
+The demo is built using [Vite](https://vitejs.dev/) to provide a fast development experience.
 
 ## Table of contents
 
-- [👀 Try the live demo: https://shtr2-2iaaa-aaaal-qckva-cai.icp0.io](#-try-the-live-demo-httpsshtr2-2iaaa-aaaal-qckva-caiicp0io)
-- [Key features](#key-features)
-- [Table of contents](#table-of-contents)
 - [App components](#app-components)
   - [Backend](#backend)
   - [Frontend](#frontend)
