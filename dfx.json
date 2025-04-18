@@ -8,14 +8,6 @@
       "type": "custom",
       "wasm": "https://github.com/kristoferlund/ic-siws/releases/download/v0.0.2/ic_siws_provider.wasm.gz"
     },
-    "backend": {
-      "candid": "packages/backend/backend.did",
-      "declarations": {
-        "output": "packages/backend/declarations"
-      },
-      "package": "backend",
-      "type": "rust"
-    },
     "frontend": {
       "build": ["pnpm run build"],
       "source": ["packages/frontend/dist"],

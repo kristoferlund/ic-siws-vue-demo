@@ -14,7 +14,6 @@ deploy-provider:
 	        session_expires_in = opt 604800000000000; /* 1 week */ \
 	        targets = opt vec { \
 	            \"$$(dfx canister id ic_siws_provider)\"; \
-	            \"$$(dfx canister id backend)\"; \
 	        }; \
           runtime_features = null; \
 	    } \
@@ -34,22 +33,17 @@ upgrade-provider:
 	        session_expires_in = opt 604800000000000; /* 1 week */ \
 	        targets = opt vec { \
 	            \"$$(dfx canister id ic_siws_provider)\"; \
-	            \"$$(dfx canister id backend)\"; \
 	        }; \
           runtime_features = null; \
 	    } \
 	)"
 	dfx generate ic_siws_provider
 
-deploy-backend:
-	dfx deploy backend
-	dfx generate backend
-
 deploy-frontend:
 	pnpm install
 	dfx deploy frontend
 
-deploy-all: create-canisters deploy-provider deploy-backend deploy-frontend
+deploy-all: create-canisters deploy-provider deploy-frontend
 
 run-frontend:
 	pnpm install

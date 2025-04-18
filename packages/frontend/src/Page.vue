@@ -20,7 +20,7 @@ watch(publicKey, () => {
 });
 
 const loginButtonText = computed(() => {
-  if (siws.signMessageStatus === "pending") return "Signing SIWE message...";
+  if (siws.signMessageStatus === "pending") return "Signing SIWS message...";
   if (siws.loginStatus === "logging-in") return "Logging in...";
   if (siws.prepareLoginStatus === "preparing") return "Preparing...";
   if (siws.loginStatus === "error") return "Login";
@@ -42,8 +42,8 @@ const isLoginButtonDisabled = computed(() => {
     <a href="https://internetcomputer.org" target="_blank">
       <img src="./assets/ic.svg" class="logo" alt="Internet Computer" />
     </a>
-    <a href="https://ethereum.org" target="_blank">
-      <img src="./assets/ethereum.svg" class="logo" alt="Ethereum" />
+    <a href="https://solana.com" target="_blank">
+      <img src="./assets/solana.svg" class="logo" alt="Solana" />
     </a>
     <a href="https://vuejs.org/" target="_blank">
       <img src="./assets/vue.svg" class="logo" alt="Vue" />
@@ -53,7 +53,7 @@ const isLoginButtonDisabled = computed(() => {
   <h1>Sign in with Solana</h1>
 
   <div>
-    This demo application and template demonstrates how to sign in Ethereum users into an IC canister using
+    This demo application and template demonstrates how to sign in Solana users into an IC canister using
     <a href="https://www.npmjs.com/package/ic-siws-js">ic-siws-js</a> and the
     <a href="https://github.com/kristoferlund/ic-siws">ic-siws-provider</a> canister.
   </div>
