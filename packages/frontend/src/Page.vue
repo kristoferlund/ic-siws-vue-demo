@@ -1,46 +1,40 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { createWalletClient, custom } from "viem";
-import { mainnet } from "viem/chains";
-import { useSiwe } from "ic-siwe-js/vue";
+import { computed, watch } from "vue";
+import { useSiws } from "ic-siws-js/vue";
+import { WalletMultiButton } from "solana-wallets-vue";
+import { useWallet } from 'solana-wallets-vue';
+import type { SignInMessageSignerWalletAdapter } from "@solana/wallet-adapter-base";
 
-const siwe = useSiwe();
-const account = ref<string | null>(null);
+const siws = useSiws();
+const { publicKey, wallet } = useWallet();
+
+// Monitor the wallet connection and update the SIWS adapter accordingly
+watch(publicKey, () => {
+  // An adapter is available when a wallet is connected/selected
+  if (wallet.value?.adapter) {
+    siws.setAdapter(wallet.value.adapter as SignInMessageSignerWalletAdapter);
+  } else {
+    // No wallet is connected, so we clear the siws identity
+    siws.clear();
+  }
+});
 
 const loginButtonText = computed(() => {
-  if (siwe.signMessageStatus === "pending") return "Signing SIWE message...";
-  if (siwe.loginStatus === "logging-in") return "Logging in...";
-  if (siwe.prepareLoginStatus === "preparing") return "Preparing...";
-  if (siwe.loginStatus === "error") return "Login";
+  if (siws.signMessageStatus === "pending") return "Signing SIWE message...";
+  if (siws.loginStatus === "logging-in") return "Logging in...";
+  if (siws.prepareLoginStatus === "preparing") return "Preparing...";
+  if (siws.loginStatus === "error") return "Login";
   return "Login";
 });
 
 const isLoginButtonDisabled = computed(() => {
   return (
-    siwe.signMessageStatus === "pending" ||
-    siwe.loginStatus === "logging-in" ||
-    siwe.prepareLoginStatus === "preparing"
+    siws.signMessageStatus === "pending" ||
+    siws.loginStatus === "logging-in" ||
+    siws.prepareLoginStatus === "preparing"
   );
 });
 
-async function connectWallet() {
-  if (!window.ethereum) {
-    console.error("No Ethereum provider found (e.g., MetaMask).");
-    return;
-  }
-
-  const walletClient = createWalletClient({
-    chain: mainnet,
-    transport: custom(window.ethereum),
-  });
-
-  try {
-    const accounts = await walletClient.requestAddresses();
-    account.value = accounts[0] || null;
-  } catch (error) {
-    console.error("Failed to connect wallet:", error);
-  }
-}
 </script>
 
 <template>
@@ -56,12 +50,12 @@ async function connectWallet() {
     </a>
   </div>
 
-  <h1>Sign in with Ethereum</h1>
+  <h1>Sign in with Solana</h1>
 
   <div>
     This demo application and template demonstrates how to sign in Ethereum users into an IC canister using
-    <a href="https://www.npmjs.com/package/ic-siwe-js">ic-siwe-js</a> and the
-    <a href="https://github.com/kristoferlund/ic-siwe">ic-siwe-provider</a> canister.
+    <a href="https://www.npmjs.com/package/ic-siws-js">ic-siws-js</a> and the
+    <a href="https://github.com/kristoferlund/ic-siws">ic-siws-provider</a> canister.
   </div>
 
   <div class="pill-container">
@@ -69,39 +63,37 @@ async function connectWallet() {
   </div>
 
   <div class="container">
-    <div v-if="account" id="ethAddress">
-      {{ account.slice(0, 6) }}...{{ account.slice(-4) }}
+    <div v-if="publicKey" id="publicKey">
+      {{ publicKey.toString().slice(0, 4) }}...{{ publicKey.toString().slice(-4) }}
     </div>
 
-    <div v-if="siwe.identity" id="icPrincipal">
-      {{ siwe.identity.getPrincipal().toString().slice(0, 6) }}...{{ siwe.identity.getPrincipal().toString().slice(-4) }}
+    <div v-if="siws.identity" id="icPrincipal">
+      {{ siws.identity.getPrincipal().toString().slice(0, 6) }}...{{ siws.identity.getPrincipal().toString().slice(-4) }}
     </div>
 
-    <button v-if="!account" @click="connectWallet" id="connectButton">
-      Connect wallet
-    </button>
+    <wallet-multi-button v-if="!publicKey" dark/>
 
     <button
-      v-if="account && !siwe.identity"
-      @click="siwe.login"
+      v-if="publicKey && !siws.identity"
+      @click="siws.login"
       :disabled="isLoginButtonDisabled"
       id="loginButton"
     >
       {{ loginButtonText }}
     </button>
 
-    <button v-if="account && siwe.identity" @click="siwe.clear" id="logoutButton">
+    <button v-if="publicKey && siws.identity" @click="siws.clear" id="logoutButton">
       Logout
     </button>
 
-    <div v-if="siwe.isPrepareLoginError || siwe.isLoginError || !!siwe.signMessageError" class="error" id="error">
-      {{ siwe.prepareLoginError || siwe.loginError || siwe.signMessageError }}
+    <div v-if="siws.isPrepareLoginError || siws.isLoginError || !!siws.signMessageError" class="error" id="error">
+      {{ siws.prepareLoginError || siws.loginError || siws.signMessageError }}
     </div>  
   </div>
 
   <div class="links">
-    <a href="https://github.com/kristoferlund/ic-siwe-vue-demo" target="_blank" rel="noreferrer">
-      <img src="https://img.shields.io/badge/github-ic--siwe--vue--demo-blue.svg?style=for-the-badge" />
+    <a href="https://github.com/kristoferlund/ic-siws-vue-demo" target="_blank" rel="noreferrer">
+      <img src="https://img.shields.io/badge/github-ic--siws--vue--demo-blue.svg?style=for-the-badge" />
     </a>
   </div>
 </template>
