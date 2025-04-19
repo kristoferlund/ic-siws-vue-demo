@@ -2,38 +2,50 @@
 import { computed, watch } from "vue";
 import { useSiws } from "ic-siws-js/vue";
 import { WalletMultiButton } from "solana-wallets-vue";
-import { useWallet } from 'solana-wallets-vue';
+import { useWallet } from "solana-wallets-vue";
 import type { SignInMessageSignerWalletAdapter } from "@solana/wallet-adapter-base";
 
 const siws = useSiws();
 const { publicKey, wallet } = useWallet();
 
-// Monitor the wallet connection and update the SIWS adapter accordingly
+// Update SIWS adapter when wallet connects; clear identity on disconnect
 watch(publicKey, () => {
-  // An adapter is available when a wallet is connected/selected
-  if (wallet.value?.adapter) {
-    siws.setAdapter(wallet.value.adapter as SignInMessageSignerWalletAdapter);
+  const adapter = wallet.value?.adapter;
+  if (adapter && isSignerAdapter(adapter)) {
+    siws.setAdapter(adapter);
   } else {
-    // No wallet is connected, so we clear the siws identity
     siws.clear();
   }
 });
 
-const loginButtonText = computed(() => {
+// Button label based on SIWS authentication state
+const loginButtonText = computed((): string => {
   if (siws.signMessageStatus === "pending") return "Signing SIWS message...";
   if (siws.loginStatus === "logging-in") return "Logging in...";
   if (siws.prepareLoginStatus === "preparing") return "Preparing...";
-  if (siws.loginStatus === "error") return "Login";
   return "Login";
 });
 
-const isLoginButtonDisabled = computed(() => {
+// Disable login button during any ongoing SIWS operation
+const isLoginButtonDisabled = computed((): boolean => {
   return (
     siws.signMessageStatus === "pending" ||
     siws.loginStatus === "logging-in" ||
     siws.prepareLoginStatus === "preparing"
   );
 });
+
+// Type guard to ensure adapter can sign SIWS messages
+function isSignerAdapter(
+  adapter: unknown
+): adapter is SignInMessageSignerWalletAdapter {
+  return (
+    typeof adapter === "object" &&
+    adapter !== null &&
+    "signMessage" in adapter &&
+    typeof (adapter as any).signMessage === "function"
+  );
+}
 
 </script>
 
