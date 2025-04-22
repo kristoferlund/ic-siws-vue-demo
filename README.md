@@ -1,28 +1,27 @@
 ![](media/header.png)
 
-> [!NOTE]  
-> In addition to this Vue demo of ic-siws, there are versions for React, Svelte etc. Check out the
-> main package [ic-siws](https://github.com/kristoferlund/ic-siws) for more information.
+## Overview
 
-✅ Sign in with Solana to interact with smart contracts (canisters) on the [Internet Computer](https://internetcomputer.org) (IC)!
+This repository is a Vue 3 + Vite demo application and template for Sign‑In‑With‑Solana (SIWS) to an Internet Computer (IC) canister. By combining:
 
-✅ Establish a one-to-one relationship between a Solana wallet and an IC identity.
+- **solana-wallets-vue** (wallet connections)  
+- **ic-siws-js** (SIWS authentication)  
+- **ic_siws_provider** canister (Rust)  
 
-✅ Access the IC capabilities from Solana dapp frontends, create cross-chain dapps! Some of the features IC provide are:
+you get a fully authenticated cross‑chain dapp where a Solana wallet maps one‑to‑one to an IC identity.
 
-- Native integration with BTC and ETH
-- Twin tokens (ckBTC, ckETH)
-- Fast finality
-- Low transaction fees
-- HTTPS outcalls
-- Store large amounts of data cheaply
-- etc
+> [!NOTE]
+> In addition to this Vue demo of ic-siws, there are versions for React, Svelte, and more in the main [ic-siws](https://github.com/kristoferlund/ic-siws) repository.
 
-This **Vue** demo application and template demonstrates how to login Solana users using [ic-siws-js](https://www.npmjs.com/package/ic-siws-js) and the [ic-siws-provider](https://github.com/kristoferlund/ic-siws/tree/main/packages/ic_siws_provider) canister.
+### Highlights
 
-The goal of the [ic-siws](https://github.com/kristoferlund/ic-siws) project is to enhance the interoperability between Solana and the Internet Computer platform, enabling developers to build applications that leverage the strengths of both platforms.
+- Sign in with Solana to interact with IC canisters  
+- One‑to‑one mapping between wallet and IC identity  
+- Leverage IC features: BTC/ETH integration, fast finality, low transaction fees, HTTPS outcalls, cheap data storage
 
-## 👀 Try the live demo: <https://fqws5-uyaaa-aaaal-qsmta-cai.icp0.io>
+## Live Demo
+
+Try it live: <https://fqws5-uyaaa-aaaal-qsmta-cai.icp0.io>
 
 ## Key features
 
