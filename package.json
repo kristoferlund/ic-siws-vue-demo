@@ -15,7 +15,7 @@
     "@solana/wallet-adapter-base": "^0.9.24",
     "@types/node": "^22.10.7",
     "dotenv": "^16.4.7",
-    "ic-siws-js": "file:../ic-siws/packages/ic_siws_js",
+    "ic-siws-js": "^0.1.0",
     "path": "^0.12.7",
     "react-dom": "^19.1.0",
     "solana-wallets-vue": "^0.7.1",
