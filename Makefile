@@ -4,8 +4,8 @@ create-canisters:
 deploy-provider:
 	dfx deploy ic_siws_provider --argument "( \
 	    record { \
-	        domain = \"127.0.0.1\"; \
-	        uri = \"http://127.0.0.1:5173\"; \
+				  domain = \"localhost:5173\"; \
+	        uri = \"http://localhost:5173\"; \
 	        salt = \"salt\"; \
 					chain_id = opt \"mainnet\"; \
 	        scheme = opt \"http\"; \
@@ -23,8 +23,8 @@ deploy-provider:
 upgrade-provider:
 	dfx canister install ic_siws_provider --mode upgrade --upgrade-unchanged --argument "( \
 	    record { \
-	        domain = \"127.0.0.1\"; \
-	        uri = \"http://127.0.0.1:5173\"; \
+	  		  domain = \"localhost:5173\"; \
+	        uri = \"http://localhost:5173\"; \
 	        salt = \"salt\"; \
 					chain_id = opt \"mainnet\"; \
 	        scheme = opt \"http\"; \
